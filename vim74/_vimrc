@@ -1,0 +1,158 @@
+" disable VI's compatible mode..
+set nocompatible
+
+set fileencodings=ucs-bom,utf-8
+set fileencoding=utf-8
+set fileformat=unix
+
+" Set mapleader
+let mapleader = ","
+let g:mapleader = ","
+
+set t_Co=256
+colorscheme default
+
+"The commandbar is 2 high
+set cmdheight=2
+
+" Enable filetype plugin
+filetype plugin on
+filetype indent on
+
+" Enable syntax highlight
+syntax enable
+"highlight Comment ctermfg=Cyan guifg=Cyan
+
+" Show line number
+set nu
+
+" show matching bracets
+set showmatch
+
+" Basic editing options
+set expandtab
+set shiftwidth=2
+
+au FileType xhtml,html,python,vim,javascript setl shiftwidth=2
+au FileType python,vim,javascript setl tabstop=2
+au FileType xhtml,html setl tabstop=4
+au FileType css setl tabstop=2 noexpandtab
+au FileType java,php setl shiftwidth=4
+au FileType java,php setl tabstop=4
+
+set smarttab
+set lbr
+set tw=0
+
+
+"Auto indent
+set ai
+
+" Smart indet
+set si
+
+" C-style indeting
+set cindent
+
+" Wrap lines
+set wrap
+
+" Sets how many lines of history VIM har to remember
+set history=400
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Have the mouse enabled all the time:
+set mouse=a
+
+" Do not redraw, when running macros.. lazyredraw
+set lz
+
+" set 7 lines to the curors - when moving vertical..
+set so=7
+
+" The commandbar is 2 high
+set cmdheight=2
+
+" Change buffer - without saving
+set hid
+
+" Ignore case when searching
+set ignorecase
+set incsearch
+
+" Set magic on
+set magic
+
+" No sound on errors.
+set noerrorbells
+set novisualbell
+set t_vb=
+
+" How many tenths of a second to blink
+set mat=4
+
+" Highlight search things
+set hlsearch
+
+" Turn backup off
+set nobackup
+set nowb
+set noswapfile
+
+" smart backspace
+set backspace=start,indent,eol
+
+" Set statusline
+function! CurrectDir()
+    let curdir = substitute(getcwd(), "", "", "g")
+    return curdir
+endfunction
+set statusline=\ [File]\ %F%m%r%h\ %w\ \ [PWD]\ %r%{CurrectDir()}%h\ \ %=[Line]\ %l,%c\ %=\ %P
+set laststatus=2
+
+" Actually, the tab does not switch buffers, but my arrows
+" Bclose function ca be found in "Buffer related" section
+map <leader>bd :Bclose<cr>
+
+" map <down> <leader>bd
+" Use the arrows to something usefull
+map <leader>, :bn<cr>
+map <leader>. :bp<cr>
+
+" Switch to current dir
+map <leader>cd :cd %:p:h<cr>
+
+" switch buffers with Tab
+map <C-Tab> :bn<CR>
+
+nmap <F3> :BufExplorer<CR>
+
+" Mark
+hi MarkWord1  ctermbg=Cyan     ctermfg=Black  guibg=#8CCBEA    guifg=Black
+hi MarkWord2  ctermbg=Green    ctermfg=Black  guibg=#A4E57E    guifg=Black
+hi MarkWord3  ctermbg=Yellow   ctermfg=Black  guibg=#FFDB72    guifg=Black
+hi MarkWord4  ctermbg=Red      ctermfg=Black  guibg=#FF7272    guifg=Black
+hi MarkWord5  ctermbg=Magenta  ctermfg=Black  guibg=#FFB3FF    guifg=Black
+hi MarkWord6  ctermbg=Blue     ctermfg=Black  guibg=#9999FF    guifg=Black
+
+" remove CR at end of lines
+let PHP_removeCRwhenUnix = 1
+" Set up automatic formatting
+set formatoptions+=tcqlro
+" Set maximum text width (for wrapping)
+set textwidth=120
+
+function! PHP_CheckSyntax()
+    setlocal makeprg=php\ -l\ -n\ -d\ html_errors=off
+    setlocal shellpipe=>
+
+    " Use error format for parsing PHP error output
+    setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+    make %
+endfunction
+
+" Perform :PHP_CheckSyntax()
+map <F5> :call PHP_CheckSyntax()<CR>
+
