@@ -129,6 +129,12 @@ map <C-Tab> :bn<CR>
 
 nmap <F3> :BufExplorer<CR>
 
+" NERDTree NERDTreeToggle
+map <F10> :NERDTreeToggle<CR>
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
+
 " Mark
 hi MarkWord1  ctermbg=Cyan     ctermfg=Black  guibg=#8CCBEA    guifg=Black
 hi MarkWord2  ctermbg=Green    ctermfg=Black  guibg=#A4E57E    guifg=Black
