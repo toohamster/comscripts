@@ -4,6 +4,7 @@ Validator = {
     Phone : /^((\(\d{2,3}\))|(\d{3}\-))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/,
     Mobile : /^((\(\d{2,3}\))|(\d{3}\-))?13\d{9}$/,
     Url : /^http:\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/,
+    Domain : /^(http(s)?:\/\/)?([0-9a-zA-Z\-]{1,}?\.)?[0-9a-zA-Z\-]{1,}(\.(ac.cn|asia|cc|club|cn|com|com.cn|info|la|me|mobi|name|net|net.cn|org|pw|tv|wang|xyz|在线|中国|中文网))+$/,
     IdCard : "this.IsIdCard(value)",
     Currency : /^\d+(\.\d+)?$/,
     Number : /^\d+$/,
