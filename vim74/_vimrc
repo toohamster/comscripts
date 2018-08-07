@@ -1,7 +1,7 @@
 " disable VI's compatible mode..
 set nocompatible
 
-set fileencodings=ucs-bom,utf-8
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set fileencoding=utf-8
 set fileformat=unix
 
